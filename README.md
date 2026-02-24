@@ -34,3 +34,12 @@ This transforms the problem into a time-series binary classification task.
 - Scikit-learn
 - XGBoost
 - Imbalanced-learn (SMOTE)
+
+---
+
+## 🔐 Data Security Notice
+
+Due to data security and confidentiality considerations, the original PLC dataset used in this project cannot be publicly shared.
+
+The dataset contains industrial sensor data that may reflect sensitive operational information.  
+For demonstration purposes, only the modeling approach and methodology are shared in this repository.
