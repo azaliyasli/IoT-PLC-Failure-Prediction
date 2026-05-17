@@ -29,10 +29,12 @@ roc_scores = []
 for fold, (train_idx, test_idx) in enumerate(tscv.split(X)):
     X_train, X_test = X.iloc[train_idx], X.iloc[test_idx]
     y_train, y_test = y.iloc[train_idx], y.iloc[test_idx]
-
+    
+    # Resampling
     smote = SMOTE(sampling_strategy='minority', random_state=42)
     X_train_res, y_train_res = smote.fit_resample(X_train, y_train)
-
+    
+    # Training
     model = xgb.XGBClassifier(
         n_estimators=100,
         max_depth=4,
@@ -43,6 +45,7 @@ for fold, (train_idx, test_idx) in enumerate(tscv.split(X)):
 
     model.fit(X_train_res, y_train_res)
 
+    # Prediction
     y_prob = model.predict_proba(X_test)[:, 1]
     y_pred = (y_prob > 0.45).astype(int)
 
